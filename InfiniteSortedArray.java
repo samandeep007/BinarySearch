@@ -1,6 +1,8 @@
 public class InfiniteSortedArray {
     public static void main(String[] args) {
-
+         int[] numbers = {1,2,32,43,54,61,74,322};
+         int target = 54;
+        System.out.println(searchInfiniteSortedArray(numbers, target));
     }
 
     static int searchInfiniteSortedArray(int[] arr, int target){
