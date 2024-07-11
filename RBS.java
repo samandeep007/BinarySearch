@@ -24,6 +24,38 @@ public class RBS {
         return -1;
     }
 
+    static int findPivotWithDuplicates(int[] arr){
+        int start = 0;
+        int end = arr.length - 1;
+        while(start<=end){
+            int midpoint = start + (end-start)/2;
+            if(midpoint != end && arr[midpoint]>arr[midpoint+1]){
+                return midpoint;
+            }
+            if(midpoint != start && arr[midpoint] < arr[midpoint - 1]){
+                return midpoint - 1;
+            }
+            if(arr[midpoint] == arr[start] && arr[midpoint] == arr[end]){
+                //What if the start is pivot??
+                if(arr[start] > arr[start+1]){
+                    return start;
+                }
+                start++;
+                if(arr[end] < arr[end-1]){
+                    return end - 1;
+                }
+                end--;
+            }
+            else if(arr[start]<arr[midpoint] || arr[start] == arr[midpoint] && arr[end] < arr[midpoint]){
+                start = midpoint + 1;
+            }
+            else  {
+                end = midpoint - 1;
+            }
+        }
+        return -1;
+    }
+
       static int search(int[] nums, int target) {
           int start = 0;
           int end = nums.length - 1;
